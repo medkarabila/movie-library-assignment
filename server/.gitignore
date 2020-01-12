@@ -1,0 +1,21 @@
+# IDEA Ignores #
+################
+*.iml
+*.ipr
+*.iws
+.idea/
+out/
+local.properties
+
+# Generic Android ignores #
+###########################
+bin/
+target
+gen/
+
+# Logs and databases #
+######################
+log/
+*.log
+*.sql
+*.sqlite

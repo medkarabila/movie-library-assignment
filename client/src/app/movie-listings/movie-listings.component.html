@@ -1,0 +1,49 @@
+<header class="container-fluid">
+  <div class="row">
+    <div class="col-12 text-center pt-4 pb-4 font-weight-bold bg-warning text-success">
+      Movie Library
+    </div>
+  </div>
+</header>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-lg-4 mt-5 mb-5">
+      <form>
+        <div class="form-group row">
+          <label for="sort" class="col-6 col-form-label col-form-label-sm text-right">Sort Movies By:</label>
+          <select (change)="sortBy($event)" name="sort" id="movie-sort" class="offset-1 col-4 form-control form-control-sm custom-select-sm">
+            <option value="Title">Title</option>
+            <option value="Director">Director</option>
+            <option value="Release Date">Date</option>
+            <option value="Type">Type</option>
+          </select>
+        </div>
+      </form>
+    </div>
+    <div class="col-xs-12 col-md-6 offset-lg-4 col-lg-4 mt-5 mb-5">
+      <form>
+          <div class="form-group row">
+            <input class="col-6 form-control form-control-sm" type="text" id="search">
+            <input (click)="search($event)" type="submit" value="Search" class="offset-2 col-4 btn btn-light btn-sm bg-primary text-white">
+          </div>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <app-movie-card *ngFor="let movie of allMovies" class="col-xs-12 col-md-6 col-lg-4 col-xl-3 mt-5 mb-5" [movie]="movie" (deleted)="onDelete($event)"></app-movie-card>
+    <div class="movie-create-form-container col-xs-12 col-md-6 col-lg-4 col-xl-3 mt-3 mb-3">
+      <form id="movie-create-form" class="movie-edit hidden">
+        <input type="hidden" name="id" [(ngModel)]="newMovie.id">
+        <div class="form-group"><label for="title">Title: </label><input required class="form-control" type="text" name="title" [(ngModel)]="newMovie.title"></div>
+        <div class="form-group"><label for="director">Director: </label><input required class="form-control" type="text" name="director" [(ngModel)]="newMovie.director"></div>
+        <div class="form-group"><label for="releaseDate">Release Date: </label><input class="form-control" required type="text" name="releaseDate" [(ngModel)]="newMovie.releaseDate" placeholder="DD/MM/YYYY"></div>
+        <div class="form-group"><label for="type">Type: </label><input required class="form-control" type="text" name="type" [(ngModel)]="newMovie.type"></div>
+        <input (click)="onCreate($event)" class="btn btn-primary" type="submit" value="Create">
+        <button (click)="onCancel($event)" class="btn btn-outline-secondary">Cancel</button>
+      </form>
+      <div class="movie-new">
+        <button (click)="showCreateForm($event)" class="btn btn-outline-secondary" id="btn-movie-new">Create new movie</button>
+      </div>
+    </div>
+  </div>
+</div>

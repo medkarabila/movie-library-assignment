@@ -1,0 +1,11 @@
+<div class="movie-edit hidden">
+  <form class="movie-edit-form">
+    <input type="hidden" name="id" [(ngModel)]="movie.id">
+    <div class="form-group"><label for="title">Title: </label><input required class="form-control" type="text" name="title" [(ngModel)]="movie.title"></div>
+    <div class="form-group"><label for="director">Director: </label><input required class="form-control" type="text" name="director" [(ngModel)]="movie.director"></div>
+    <div class="form-group"><label for="releaseDate">Release Date: </label><input class="form-control" required type="text" name="releaseDate" [(ngModel)]="movie.releaseDate"></div>
+    <div class="form-group"><label for="type">Type: </label><input required class="form-control" type="text" name="type" [(ngModel)]="movie.type"></div>
+    <input (click)="onSave($event)" class="btn btn-primary" type="submit" value="Save">
+    <button (click)="onCancel($event)" class="btn btn-outline-secondary">Cancel</button>
+  </form>
+</div>

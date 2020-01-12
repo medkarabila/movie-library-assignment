@@ -1,0 +1,13 @@
+<div id="movie-card-{{movie.id}}" class="card movie-card">
+  <div class="card-header movie-card-header">
+      <span class="movie-title font-weight-bold">{{movie.title}}</span>
+      <span (click)="showEditForm($event)" class="btn-edit far fa-edit text-muted" data-id="{{movie.id}}"></span>
+      <span (click)="sendDelete($event)" class="btn-delete far fa-trash text-muted" data-id="{{movie.id}}"></span>
+  </div>
+  <div class="card-body movie-info" id="movie-info-{{movie.id}}">
+    <p><strong>Director: </strong>{{movie.director}}</p>
+    <p><strong>Release: </strong>{{movie.releaseDate}}</p>
+    <p><strong>Type: </strong>{{movie.type}}</p>
+  </div>
+  <app-movie-form id="movie-edit-form-{{movie.id}}" class="card-body hidden" [movie]="movie" (done)="onUpdate($event)"></app-movie-form>
+</div>
